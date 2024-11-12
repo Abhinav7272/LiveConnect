@@ -1,6 +1,14 @@
 # LiveConnect
 
-LiveConnect is a video upload and streaming platform built using Java, Spring Boot, HTML, JavaScript, and CSS. This project supports user authentication, video uploads, and video streaming functionality. Users can log in, upload videos, and view uploaded videos.
+LiveConnect is a video upload and streaming platform built using Java, Spring Boot, HTML, JavaScript, and CSS. This project provides a comprehensive solution for users to upload, view, and stream videos while utilizing advanced technologies such as Kafka, MongoDB, and FFmpeg to ensure scalability, efficient data handling, and smooth video processing.
+
+## Key Features:
+- User Authentication: Users can sign in and receive a token for secure access to the platform.
+- Video Upload: Users can upload videos, which are transcode and stored.
+- Video Streaming: Users can stream videos directly from the platform in a seamless, user-friendly interface.
+- Logging : Kafka is used for logging.
+- Data Storage: MongoDB is used as the database to store user and video metadata efficiently.
+- Video Processing: FFmpeg is used to process video files, such as resizing, transcoding, and converting video formats to ensure compatibility for streaming.
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -78,6 +86,7 @@ LiveConnect is a video upload and streaming platform built using Java, Spring Bo
 - **Login** (POST /api/auth/login): Authenticates users and provides a JWT token.
 - **Upload Video** (POST /api/videos/upload): Authenticated users can upload videos.
 - **Get All Videos** (GET /api/videos/all): Returns a list of all uploaded videos.
+- **There are all other end points also but these are the most IMP.**
 
 ## Contact 
 Please connect me on gaurabhinav54@gmail.com
