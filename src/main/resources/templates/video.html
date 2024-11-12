@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 2.5rem;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .video-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .video-card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .video-details {
+            padding: 15px;
+        }
+
+        .video-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #222;
+            margin: 10px 0;
+        }
+
+        .video-description {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 8px 0;
+        }
+
+        .video-meta {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+    </style>
+    <script>
+        // Retrieve token from localStorage
+        function getTokenFromLocalStorage() {
+            return localStorage.getItem("token");
+        }
+
+        // Fetch and display all videos
+        async function fetchAllVideos() {
+            try {
+                const token = getTokenFromLocalStorage();
+                const response = await fetch("http://localhost:8081/api/videos/all", {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                if (response.ok) {
+                    const videos = await response.json();
+                    displayVideos(videos);
+                } else {
+                    alert("Failed to load videos.");
+                }
+            } catch (error) {
+                console.error("Error fetching videos:", error);
+                alert("An error occurred while loading videos.");
+            }
+        }
+
+        // Display videos in the videos container
+        function displayVideos(videos) {
+            const videosContainer = document.querySelector(".videos-container");
+            videosContainer.innerHTML = ""; // Clear existing videos
+
+            videos.forEach(video => {
+                const videoCard = document.createElement("div");
+                videoCard.classList.add("video-card");
+
+                videoCard.innerHTML = `
+                    <video class="video-thumbnail" controls src="${video.filePath}"></video>
+                    <div class="video-details">
+                        <h3 class="video-title">${video.title}</h3>
+                        <p class="video-description">${video.description}</p>
+                        <small class="video-meta">Uploaded by: ${video.uploaderId} on ${new Date(video.uploadDate).toLocaleDateString()}</small>
+                    </div>
+                `;
+                videosContainer.appendChild(videoCard);
+            });
+        }
+
+        // Call fetchAllVideos on page load
+        document.addEventListener("DOMContentLoaded", fetchAllVideos);
+    </script>
+</head>
+<body>
+
+<h2>Available Videos</h2>
+<div class="videos-container"></div>
+
+</body>
+</html>

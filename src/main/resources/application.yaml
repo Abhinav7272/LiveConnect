@@ -1,0 +1,8 @@
+Spring:
+  data:
+    mongodb:
+      database: VideoDataBase
+      uri: mongodb+srv://gaurabhinav54:PassWordcluster0.xq6iw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      auto-index-creation: true
+
+
