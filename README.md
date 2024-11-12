@@ -40,12 +40,12 @@ LiveConnect is a video upload and streaming platform built using Java, Spring Bo
 
 3. Set up environment variables for database connection in `application.yaml`:
     ```properties
-Spring:
-  data:
-    mongodb:
-      database: VideoDataBase
-      uri: mongodb+srv://gaurabhinav54:PassWordcluster0.xq6iw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-      auto-index-creation: true
+    Spring:
+      data:
+        mongodb:
+          database: VideoDataBase
+          uri: mongodb+srv://gaurabhinav54:PassWordcluster0.xq6iw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+          auto-index-creation: true
     ```
 
 4. Run the application:
