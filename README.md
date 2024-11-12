@@ -62,8 +62,38 @@ LiveConnect is a video upload and streaming platform built using Java, Spring Bo
     ```
 
 5. Open your browser and navigate to `http://localhost:8081`.
+6. Your application.properties looks like:
+   ```
+      spring.application.name=LiveConnect
+      server.port=8081
+      Enable or disable Thymeleaf cache (useful for development)
+      spring.thymeleaf.cache=false
+      
+      Define the suffix and prefix of your Thymeleaf templates
+      spring.thymeleaf.prefix=classpath:/templates/
+      spring.thymeleaf.suffix=.html
+      
+      Kafka configuration
+      spring.kafka.bootstrap-servers=localhost:9092
+      
+      Producer configuration
+      spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+      spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+      
+      Consumer configuration
+      spring.kafka.consumer.group-id=liveconnect-group
+      spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+      spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+      
+      spring.servlet.multipart.max-file-size=10MB
+      spring.servlet.multipart.max-request-size=10MB
+      
+      spring.thymeleaf.enabled=true
+      
+      spring.resource.static-location: file:/Users/abhinavkumargaur/Documents/Coding_workspace/Resume_Projects/Proj2_videoStreaming/LiveConnect%202/src/main/resources/static
+   ```
 
----
+
 ## Project Structure 
 ![Screenshot 2024-11-12 at 5 12 42 PM](https://github.com/user-attachments/assets/e9e441f5-56f2-4881-829f-ab955ab82022)
 ## Features
