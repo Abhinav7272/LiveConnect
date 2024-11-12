@@ -64,7 +64,8 @@ LiveConnect is a video upload and streaming platform built using Java, Spring Bo
 5. Open your browser and navigate to `http://localhost:8081`.
 
 ---
-
+## Project Structure 
+![Screenshot 2024-11-12 at 5 12 42 PM](https://github.com/user-attachments/assets/e9e441f5-56f2-4881-829f-ab955ab82022)
 ## Features
 
 - **User Authentication**: Login functionality that provides an authorization token for secure requests.
